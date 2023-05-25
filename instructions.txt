@@ -1,0 +1,24 @@
+//appsettings.json
+"EmailSettings": {
+  "Mail": "sender@outlook.com",
+  "DisplayName": "sender name",
+  "Password": "superpassword",
+  "Host": "smtp-mail.outlook.com",
+  "Port": 587,
+  "ProxyHost": "0.0.0.0",
+  "ProxyPort": 123
+},
+
+//Startup.cs
+services.AddEmail(c => Configuration.GetSection("EmailSettings").Bind(c));
+
+//injection
+IMailService mailService
+
+//use
+await mailService.SendEmailAsync(new EmailRequest
+{
+    Body = $"",
+    Subject = $"",
+    ToEmail = "receiver@outlook.com"
+});
