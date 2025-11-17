@@ -7,8 +7,8 @@ namespace EmailLibrary
     {
         public static void AddEmail(this IServiceCollection services, Action<EmailSettings> configureOptions)
         {
-            services.Configure<EmailSettings>(configureOptions);
-            services.AddTransient<IMailService, MailService>();
+            services.Configure(configureOptions);
+            services.AddTransient<IEmailService, MailService>();
         }
     }
 }
